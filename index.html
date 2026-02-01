@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 A Special Question...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Screen 1: Initial Question -->
+    <div class="screen active" id="screen1">
+        <div class="content-box">
+            <h1 class="main-title">💝 Hey Beautiful!</h1>
+            <p class="subtitle">I have something important to ask you...</p>
+            <div class="question-box">
+                <h2 class="question">Will you go on a date with me? 🌹</h2>
+            </div>
+            <div class="button-container">
+                <button class="btn btn-yes" id="yesBtn">Yes! 💕</button>
+                <button class="btn btn-no" id="noBtn">No</button>
+            </div>
+            <p class="hint" id="hint"></p>
+        </div>
+    </div>
+
+    <!-- Screen 2: Choose Date -->
+    <div class="screen" id="screen2">
+        <div class="content-box">
+            <h1 class="main-title">🎉 Yay! I'm so excited!</h1>
+            <p class="subtitle">Now let's plan the perfect date...</p>
+            <div class="question-box">
+                <h2 class="question">When would you like to go? 📅</h2>
+            </div>
+            <div class="date-options">
+                <button class="option-btn" data-date="This Weekend">This Weekend 🌟</button>
+                <button class="option-btn" data-date="Valentine's Day">Valentine's Day 💝</button>
+                <button class="option-btn" data-date="Next Weekend">Next Weekend ✨</button>
+                <button class="option-btn" data-date="Surprise Me">Surprise Me! 🎁</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 3: Choose Time -->
+    <div class="screen" id="screen3">
+        <div class="content-box">
+            <h1 class="main-title">Perfect! ⏰</h1>
+            <p class="subtitle">What time works best for you?</p>
+            <div class="question-box">
+                <h2 class="question">Pick your preferred time:</h2>
+            </div>
+            <div class="date-options">
+                <button class="option-btn" data-time="Morning Coffee">Morning Coffee ☕</button>
+                <button class="option-btn" data-time="Lunch">Lunch Time 🍽️</button>
+                <button class="option-btn" data-time="Evening">Evening 🌆</button>
+                <button class="option-btn" data-time="Dinner">Dinner Date 🍷</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Choose Date Type -->
+    <div class="screen" id="screen4">
+        <div class="content-box">
+            <h1 class="main-title">Amazing! 💫</h1>
+            <p class="subtitle">What kind of date sounds fun?</p>
+            <div class="question-box">
+                <h2 class="question">Choose your vibe:</h2>
+            </div>
+            <div class="date-options">
+                <button class="option-btn" data-type="Romantic Dinner">Romantic Dinner 🕯️</button>
+                <button class="option-btn" data-type="Movie Night">Movie Night 🎬</button>
+                <button class="option-btn" data-type="Adventure">Adventure Date 🏞️</button>
+                <button class="option-btn" data-type="Cozy Coffee">Cozy Coffee & Chat ☕</button>
+                <button class="option-btn" data-type="Surprise">Surprise Me! 🎉</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 5: Final Screen -->
+    <div class="screen" id="screen5">
+        <div class="content-box final-screen">
+            <div class="heart-burst">
+                <span class="heart">💖</span>
+                <span class="heart">💝</span>
+                <span class="heart">💗</span>
+                <span class="heart">💓</span>
+                <span class="heart">💕</span>
+            </div>
+            <h1 class="main-title celebration">It's a Date! 🎊</h1>
+            <div class="summary-box">
+                <h3>Here's our plan:</h3>
+                <div class="summary-item">
+                    <span class="icon">📅</span>
+                    <span class="label">When:</span>
+                    <span class="value" id="finalDate">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="icon">⏰</span>
+                    <span class="label">Time:</span>
+                    <span class="value" id="finalTime">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="icon">💫</span>
+                    <span class="label">Vibe:</span>
+                    <span class="value" id="finalType">-</span>
+                </div>
+            </div>
+            <p class="final-message">I can't wait to spend this time with you! 💕</p>
+            <p class="final-note">I'll message you soon with all the details! 📱✨</p>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

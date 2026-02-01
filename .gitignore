@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Files with real credentials - DO NOT COMMIT
+script.js
+config.local.js
+config.private.js
+
+# Environment variables
+.env
+.env.local
