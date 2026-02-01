@@ -14,10 +14,10 @@ desktop.ini
 *.log
 npm-debug.log*
 
-# Files with real credentials - DO NOT COMMIT
-script.js
+# Local config backups (keep these private)
 config.local.js
 config.private.js
+config.example.js
 
 # Environment variables
 .env
