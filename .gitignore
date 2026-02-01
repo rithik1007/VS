@@ -13,12 +13,3 @@ desktop.ini
 # Logs
 *.log
 npm-debug.log*
-
-# Local config backups (keep these private)
-config.local.js
-config.private.js
-config.example.js
-
-# Environment variables
-.env
-.env.local

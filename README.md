@@ -38,24 +38,17 @@ start index.html
 
 ## ⚙️ Configuration
 
-### Email Notifications Setup
+### Email Notifications
 
-**⚠️ IMPORTANT:** `script.js` is gitignored to protect credentials. You need to set it up locally:
+The website is pre-configured with Web3Forms for email notifications. When someone completes the date planning, you'll receive an email automatically.
 
-1. Copy `script.template.js` to `script.js`:
-   ```bash
-   copy script.template.js script.js
-   ```
-
-2. Get your free Web3Forms API key from [web3forms.com](https://web3forms.com)
-
-3. Open `script.js` and update lines 6-7:
+**To customize:**
+1. Get your free Web3Forms API key from [web3forms.com](https://web3forms.com)
+2. Open `script.js` and update lines 5-6:
    ```javascript
-   const YOUR_EMAIL = 'your.email@gmail.com';           // Your email
-   const WEB3FORMS_ACCESS_KEY = 'your-access-key-here'; // Your API key
+   const YOUR_EMAIL = 'your.email@gmail.com';
+   const WEB3FORMS_ACCESS_KEY = 'your-access-key-here';
    ```
-
-4. Save and test locally before deploying
 
 ## 🎨 Customization
 
