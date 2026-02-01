@@ -30,12 +30,20 @@ const funnyMessages = [
 // INITIALIZATION
 // ================================
 
+console.log('🚀 Script loaded successfully!');
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ DOM Content Loaded');
+    console.log('📧 Email:', YOUR_EMAIL);
+    console.log('🔑 API Key:', WEB3FORMS_ACCESS_KEY ? 'Set' : 'Missing');
+    
     initializeFloatingHearts();
     initializeScreen1();
     initializeScreen2();
     initializeScreen3();
     initializeScreen4();
+    
+    console.log('✅ All screens initialized');
 });
 
 // ================================
