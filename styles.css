@@ -11,16 +11,26 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #0a0a0a;
+    background: #0f0f1e;
     background-image: 
-        radial-gradient(at 20% 30%, rgba(120, 119, 198, 0.15) 0px, transparent 50%),
-        radial-gradient(at 80% 70%, rgba(255, 122, 155, 0.12) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
+        radial-gradient(at 27% 37%, hsla(280, 70%, 50%, 0.25) 0px, transparent 50%),
+        radial-gradient(at 97% 21%, hsla(180, 70%, 50%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsla(340, 70%, 50%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsla(240, 70%, 50%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, hsla(15, 70%, 50%, 0.15) 0px, transparent 50%),
+        radial-gradient(at 33% 50%, hsla(220, 70%, 50%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 79% 53%, hsla(300, 70%, 50%, 0.2) 0px, transparent 50%);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(30deg); }
 }
 
 /* ================================
@@ -96,25 +106,32 @@ body {
    ================================ */
 
 .content-box {
-    background: rgba(20, 20, 25, 0.7);
-    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(20, 15, 35, 0.85) 0%, rgba(30, 20, 50, 0.8) 100%);
+    border-radius: 28px;
     padding: 70px 60px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 
-                0 0 1px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: 
+        0 30px 90px rgba(139, 92, 246, 0.15),
+        0 10px 40px rgba(168, 85, 247, 0.1),
+        0 0 0 1px rgba(139, 92, 246, 0.2) inset,
+        0 2px 16px rgba(255, 255, 255, 0.05) inset;
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
     width: 100%;
     position: relative;
-    backdrop-filter: blur(40px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 2px solid;
+    border-image: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(236, 72, 153, 0.3)) 1;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .content-box:hover {
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6), 
-                0 0 1px rgba(255, 255, 255, 0.15) inset;
-    transform: translateY(-4px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        0 40px 110px rgba(139, 92, 246, 0.25),
+        0 15px 50px rgba(168, 85, 247, 0.2),
+        0 0 0 1px rgba(139, 92, 246, 0.3) inset,
+        0 2px 20px rgba(255, 255, 255, 0.08) inset;
+    transform: translateY(-6px) scale(1.01);
+    border-image: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(236, 72, 153, 0.5)) 1;
 }
 
 /* ================================
@@ -122,16 +139,23 @@ body {
    ================================ */
 
 .main-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #ffffff 0%, #e0e0ff 100%);
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #f59e0b 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 20px;
-    letter-spacing: -2px;
-    animation: fadeInDown 0.8s ease;
+    letter-spacing: -2.5px;
+    animation: fadeInDown 0.8s ease, gradientFlow 3s ease infinite;
     line-height: 1.1;
+    filter: drop-shadow(0 0 30px rgba(167, 139, 250, 0.5));
+}
+
+@keyframes gradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 @keyframes fadeInDown {
@@ -154,27 +178,54 @@ body {
 }
 
 .question-box {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
-    padding: 40px;
-    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.12) 100%);
+    padding: 45px;
+    border-radius: 22px;
     margin: 45px 0;
-    border: 1px solid rgba(99, 102, 241, 0.15);
-    transition: all 0.4s ease;
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 0 40px rgba(139, 92, 246, 0.2),
+        0 8px 32px rgba(139, 92, 246, 0.15) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+.question-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+    animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 .question-box:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 50px rgba(99, 102, 241, 0.2);
-    border: 1px solid rgba(99, 102, 241, 0.25);
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 
+        0 0 60px rgba(139, 92, 246, 0.35),
+        0 12px 48px rgba(236, 72, 153, 0.25) inset;
+    border: 2px solid rgba(139, 92, 246, 0.5);
 }
 
 .question {
-    font-size: 1.9rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1.4;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.7px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ================================
@@ -212,32 +263,63 @@ body {
 }
 
 .btn-yes {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%);
+    background-size: 200% auto;
     color: white;
     z-index: 10;
-    animation: gentlePulse 3s ease-in-out infinite;
-    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+    animation: gentlePulse 3s ease-in-out infinite, gradientFlow 3s ease infinite;
+    box-shadow: 
+        0 12px 40px rgba(139, 92, 246, 0.5),
+        0 4px 16px rgba(236, 72, 153, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-yes::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-yes:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 @keyframes gentlePulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+        box-shadow: 
+            0 12px 40px rgba(139, 92, 246, 0.5),
+            0 4px 16px rgba(236, 72, 153, 0.3);
     }
     50% {
-        transform: scale(1.02);
-        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+        transform: scale(1.03);
+        box-shadow: 
+            0 16px 50px rgba(139, 92, 246, 0.6),
+            0 6px 20px rgba(236, 72, 153, 0.4);
     }
 }
 
 .btn-yes:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 16px 48px rgba(99, 102, 241, 0.6);
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 
+        0 20px 60px rgba(139, 92, 246, 0.7),
+        0 8px 24px rgba(236, 72, 153, 0.5),
+        0 0 0 2px rgba(255, 255, 255, 0.2) inset;
     animation: none;
 }
 
 .btn-yes:active {
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
 .btn-no {
@@ -298,26 +380,48 @@ body {
 }
 
 .option-btn {
-    padding: 26px 32px;
+    padding: 28px 36px;
     font-size: 1.15rem;
     font-weight: 600;
-    background: rgba(30, 30, 40, 0.6);
-    color: rgba(255, 255, 255, 0.8);
-    border: 1.5px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(30, 25, 45, 0.7), rgba(40, 30, 60, 0.6));
+    color: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(139, 92, 246, 0.2);
+    border-radius: 16px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(139, 92, 246, 0.1) inset;
     backdrop-filter: blur(20px);
     letter-spacing: -0.2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.option-btn:hover::before {
+    left: 100%;
 }
 
 .option-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    transform: translateY(-5px) scale(1.03);
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
     color: white;
-    border-color: transparent;
-    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.4);
+    border-color: rgba(236, 72, 153, 0.5);
+    box-shadow: 
+        0 20px 50px rgba(139, 92, 246, 0.5),
+        0 8px 30px rgba(236, 72, 153, 0.3),
+        0 0 0 2px rgba(255, 255, 255, 0.1) inset;
 }
 
 .option-btn:active {

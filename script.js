@@ -52,23 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeFloatingHearts() {
     const container = document.getElementById('heartsContainer');
-    const hearts = ['💖', '💝', '💗', '💓', '💕', '💘', '❤️', '💞', '✨', '⭐'];
+    const particles = ['💖', '💝', '💗', '💓', '💕', '💘', '❤️', '💞', '✨', '⭐', '🌟', '💫'];
     
     setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
-        heart.style.fontSize = (Math.random() * 12 + 14) + 'px';
-        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        const particle = document.createElement('div');
+        particle.className = 'floating-heart';
+        particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 5 + 6) + 's';
+        particle.style.fontSize = (Math.random() * 14 + 16) + 'px';
+        particle.style.opacity = Math.random() * 0.6 + 0.2;
         
-        container.appendChild(heart);
+        // Add random color tint
+        const hue = Math.random() * 60 + 280; // Purple to pink range
+        particle.style.filter = `hue-rotate(${hue}deg) brightness(1.2)`;
+        
+        container.appendChild(particle);
         
         setTimeout(() => {
-            heart.remove();
-        }, 9000);
-    }, 400);
+            particle.remove();
+        }, 11000);
+    }, 300);
 }
 
 // ================================
@@ -358,23 +362,27 @@ function launchConfetti() {
     canvas.height = window.innerHeight;
     
     const confettiPieces = [];
-    const confettiCount = 180;
-    const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b'];
+    const confettiCount = 200;
+    const colors = [
+        '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#06b6d4', 
+        '#a78bfa', '#f472b6', '#fbbf24', '#34d399', '#22d3ee'
+    ];
     
     // Create confetti pieces
     for (let i = 0; i < confettiCount; i++) {
         confettiPieces.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
-            width: Math.random() * 12 + 6,
-            height: Math.random() * 12 + 6,
+            width: Math.random() * 14 + 8,
+            height: Math.random() * 14 + 8,
             color: colors[Math.floor(Math.random() * colors.length)],
             rotation: Math.random() * 360,
-            rotationSpeed: Math.random() * 12 - 6,
-            velocityX: Math.random() * 5 - 2.5,
-            velocityY: Math.random() * 6 + 2,
+            rotationSpeed: Math.random() * 15 - 7.5,
+            velocityX: Math.random() * 6 - 3,
+            velocityY: Math.random() * 7 + 3,
             opacity: 1,
-            shape: Math.random() > 0.5 ? 'circle' : 'square'
+            shape: Math.random() > 0.6 ? 'circle' : Math.random() > 0.5 ? 'square' : 'triangle',
+            glow: Math.random() > 0.5
         });
     }
     
@@ -385,18 +393,32 @@ function launchConfetti() {
         let activePieces = 0;
         
         confettiPieces.forEach(piece => {
-            if (piece.y < canvas.height + 50 && piece.opacity > 0) {
+            if (piece.y < canvas.height + 100 && piece.opacity > 0) {
                 activePieces++;
                 
                 ctx.save();
                 ctx.translate(piece.x, piece.y);
                 ctx.rotate((piece.rotation * Math.PI) / 180);
                 ctx.globalAlpha = piece.opacity;
+                
+                // Add glow effect
+                if (piece.glow) {
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = piece.color;
+                }
+                
                 ctx.fillStyle = piece.color;
                 
                 if (piece.shape === 'circle') {
                     ctx.beginPath();
                     ctx.arc(0, 0, piece.width / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (piece.shape === 'triangle') {
+                    ctx.beginPath();
+                    ctx.moveTo(0, -piece.height / 2);
+                    ctx.lineTo(piece.width / 2, piece.height / 2);
+                    ctx.lineTo(-piece.width / 2, piece.height / 2);
+                    ctx.closePath();
                     ctx.fill();
                 } else {
                     ctx.fillRect(-piece.width / 2, -piece.height / 2, piece.width, piece.height);
@@ -405,15 +427,15 @@ function launchConfetti() {
                 ctx.restore();
                 
                 // Update position with wind effect
-                piece.x += piece.velocityX + Math.sin(piece.y * 0.01) * 0.5;
+                piece.x += piece.velocityX + Math.sin(piece.y * 0.02) * 0.8;
                 piece.y += piece.velocityY;
                 piece.rotation += piece.rotationSpeed;
-                piece.velocityY += 0.15; // Gravity
+                piece.velocityY += 0.18; // Gravity
                 piece.velocityX *= 0.99; // Air resistance
                 
                 // Fade out as it falls
-                if (piece.y > canvas.height - 250) {
-                    piece.opacity -= 0.008;
+                if (piece.y > canvas.height - 300) {
+                    piece.opacity -= 0.01;
                 }
             }
         });
